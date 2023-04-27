@@ -9,7 +9,7 @@ public class Plataforma_Consulta {
 		Scanner leia = new Scanner(System.in);
 
 		String nome, cpf, rg, Planosaude = null, especialidade = null, mes;
-		int idade, x = 0, op, esp, data;
+		int idade, x = 0, op, esp, data, num;
 		String celular;
 		boolean confirmação;
 
@@ -30,6 +30,7 @@ public class Plataforma_Consulta {
 			op = leia.nextInt();
 			System.out.println("\n");
 
+		//fiz a validação do cpf e rg como ensinou na ultima aula por numero de caracteres mas não funcionou e não sei porque haha
 			switch (op) {
 			case 1:
 				leia.nextLine();
@@ -115,14 +116,50 @@ public class Plataforma_Consulta {
 				lista[x].imprimir();
 				
 				System.out.println("\n");
-				System.out.println("seu código para reagendamento de consulta é: "+x);
+				System.out.println("seu código de consulta é: "+x);
 				
 				break;
 			
+				//como posso confirmar que realmente o valor foi retirado do vetor?
 			case 2:
+				leia.nextLine();
+				System.out.println("Para desmarcar consulta por favor informe seu código de consulta: ");
+				x =leia.nextInt();
+				lista[x] = null;
+				System.out.println("\n");
+				System.out.println("Consulta desmarcada com sucesso!!");
 				
+				break;
+				
+			case 3:
+				
+				break;
+				
+			case 4:
+				leia.nextLine();
+				System.out.println("Insira o código da consulta");
+				x =leia.nextInt();
+				if(lista[x] != null) {
+				lista[x].imprimir();
+				
+				}else{
+				}
+				System.out.println("Este código de consulta é inválido");
+			}
+				break;
+				
+				//o case 0 está dando erro não sei porque 
+				case 0: 
+				 System.out.println("Obrigada por procurar Clínica Flor do Ventre, Volte sempre :)");
 					
-			}		
+				break;
+				
+				//o default está dando erro mas imagino que seja pelo erro de cima do case 0
+				default:
+				System.out.println("Opção Inválida! Tente novamente... \n");
+				break;
+				
+			//o laço de repetição não está se cumprindo e quando termino de marcar consulta por exemplo não retorna ao menu 	
 		} while (op != 0);
 	
 	}
