@@ -1,5 +1,7 @@
 package plataformaconsulta;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Plataforma_ConsultaAtualizada {
@@ -9,25 +11,41 @@ public class Plataforma_ConsultaAtualizada {
 				Scanner leia = new Scanner(System.in);
 
 				String nome, cpf, rg, Planosaude = null, especialidade = null, mes;
-				int idade, x = 0, op, esp, data, num;
+				int idade, x = 0, op, esp, data;
 				String celular;
-				boolean confirmação;
 
 				ConsultaInfo[] lista = new ConsultaInfo[31];
 
 				do {
-					System.out.println("\n*****************************************************\n");
-					System.out.println("Clinica Obstétrica Flor do Ventre");
-					System.out.println("Menu");
-					System.out.println("1- Marcar consulta");
-					System.out.println("2- Desmarcar consulta ");
-					System.out.println("3- Ver especialidades da Clínica");
-					System.out.println("4- Rever dados da consulta");
-					System.out.println("0- Sair");
-					System.out.println("\n*****************************************************\n");
-					System.out.println("Digite sua opção: ");
-					op = leia.nextInt();
+					System.out.println(" |*****************************************************|  ");
+					System.out.println(" |                Clinica Flor Do Ventre               |  ");
+					System.out.println(" |*****************************************************|  ");
+					System.out.println(" |                       Menu                          |  ");
+					System.out.println(" |                                                     |  ");
+					System.out.println(" |               1-Marcar consulta                     |  ");
+					System.out.println(" |               2-Desmarcar consulta                  |  ");
+					System.out.println(" |               3-Ver especialidades da Clínica       |  ");
+					System.out.println(" |               4-Rever Dados Da Consulta             |  ");
+					System.out.println(" |               0-Sair                                |  ");
+					System.out.println(" |                                                     |  ");
+					System.out.println("  *****************************************************   ");
+					System.out.println("Digite sua opção:  ");     
 
+					try {	
+						op = leia.nextInt();
+					}catch(InputMismatchException e) {
+						System.out.println("\nDigite Opcão Disponivel !!");
+						leia.nextInt();
+						op =0;
+						
+					}	
+					
+					if (op == 9) {
+						System.out.println("\nClinica Flor Do Ventre  !");
+						leia.close();
+						System.exit(0);
+					}
+					
 				//fiz a validação do cpf e rg como ensinou na ultima aula por numero de caracteres mas não funcionou e não sei porque haha
 					switch (op) {
 					case 1:
@@ -114,7 +132,7 @@ public class Plataforma_ConsultaAtualizada {
 						}
 						
 						x = x+1;
-					
+						keyPress();
 						break;
 					
 						//como posso confirmar que realmente o valor foi retirado do vetor?
@@ -127,7 +145,7 @@ public class Plataforma_ConsultaAtualizada {
 						}
 						lista[x] = null;
 						System.out.println("\nConsulta desmarcada com sucesso!!");
-						
+						keyPress();
 						break;
 						
 					case 3:
@@ -138,6 +156,7 @@ public class Plataforma_ConsultaAtualizada {
 								+ "\nPsicologia"
 								+ "\nNutricionista"
 								+ "\nConsultoria de Amamentação");
+						keyPress();
 						break;
 						
 					case 4:
@@ -150,7 +169,7 @@ public class Plataforma_ConsultaAtualizada {
 						}else{
 							System.out.println("Este código de consulta é inválido");
 						}
-						
+						keyPress();
 						break;
 						
 						//o case 0 está dando erro não sei porque 
@@ -162,12 +181,26 @@ public class Plataforma_ConsultaAtualizada {
 						//o default está dando erro mas imagino que seja pelo erro de cima do case 0
 						default:
 						System.out.println("Opção Inválida! Tente novamente... \n");
+						keyPress();
 						break;
 						
 					//o laço de repetição não está se cumprindo e quando termino de marcar consulta por exemplo não retorna ao menu 	
 				} 
 
 			} while (op != 0);
-		}
+}
+public static void keyPress() {
+
+	try {
+
+		System.out.println("\n\nPressione Enter para Continuar...");
+		System.in.read();
+
+	} catch (IOException e) {
+
+		System.out.println("Você pressionou uma tecla diferente de enter!");
+	}
+}
 
 }
+
