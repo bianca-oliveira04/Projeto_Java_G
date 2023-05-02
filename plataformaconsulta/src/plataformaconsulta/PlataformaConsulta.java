@@ -1,11 +1,12 @@
 package plataformaconsulta;
 
+
 import java.util.Scanner;
 
-public class Plataforma_Consulta {
+public class PlataformaConsulta {
 
 	public static void main(String[] args) {
-
+		
 		Scanner leia = new Scanner(System.in);
 
 		String nome, cpf, rg, Planosaude = null, especialidade = null, mes;
@@ -16,25 +17,23 @@ public class Plataforma_Consulta {
 		ConsultaInfo[] lista = new ConsultaInfo[31];
 
 		do {
-			System.out.println("*****************************************************");
+			System.out.println("\n*****************************************************\n");
 			System.out.println("Clinica Obstétrica Flor do Ventre");
 			System.out.println("Menu");
 			System.out.println("1- Marcar consulta");
 			System.out.println("2- Desmarcar consulta ");
 			System.out.println("3- Ver especialidades da Clínica");
-			System.out.println("4- Reever dados da consulta");
+			System.out.println("4- Rever dados da consulta");
 			System.out.println("0- Sair");
-			System.out.println("\n");
-			System.out.println("*****************************************************");
+			System.out.println("\n*****************************************************\n");
 			System.out.println("Digite sua opção: ");
 			op = leia.nextInt();
-			System.out.println("\n");
 
 		//fiz a validação do cpf e rg como ensinou na ultima aula por numero de caracteres mas não funcionou e não sei porque haha
 			switch (op) {
 			case 1:
 				leia.nextLine();
-				System.out.println("Insira seu nome: ");
+				System.out.println("\nInsira seu nome: ");
 				nome = leia.nextLine();
 				System.out.println("\nInsira sua idade: ");
 				idade = leia.nextInt();
@@ -45,14 +44,11 @@ public class Plataforma_Consulta {
 				cpf = leia.nextLine();
 				System.out.println("\nVai dar entrada com o Plano de Saúde ou Particular?");
 				Planosaude = leia.nextLine();	
-				System.out.println("\n");
-		    	System.out.println("Se Particular o valor da consulta há de ser vista no dia pessoalmente ");
-				System.out.println("\n");
-				System.out.println("\nInsira um telefone para contato: +55 11 ");
+		    	System.out.println("\nSe Particular o valor da consulta há de ser vista no dia pessoalmente ");
+				System.out.println("\n\nInsira um telefone para contato: +55 11 ");
 				celular = leia.nextLine();
-				System.out.println("\n");
 
-				System.out.println("*****************************************************");
+				System.out.println("\n*****************************************************\n");
 
 				do {
 					System.out.println("\n");
@@ -79,7 +75,7 @@ public class Plataforma_Consulta {
 						break;
 
 					case 4:
-						especialidade = "Psicologo, Profisional Marcela Oliveira Ramos";
+						especialidade = "Psicólogo, Profissional Marcela Oliveira Ramos";
 						break;
 
 					case 5:
@@ -87,7 +83,7 @@ public class Plataforma_Consulta {
 						break;
 
 					case 6:
-						especialidade = "Consultora de Amamentação, Profissional Jandira Rodrigues Carvalho";
+						especialidade = "Consultoria de Amamentação, Profissional Jandira Rodrigues Carvalho";
 						break;
 
 					default:
@@ -105,34 +101,41 @@ public class Plataforma_Consulta {
 				lista[x] = new ConsultaInfo (nome,idade,rg,cpf,Planosaude,celular,data,mes,especialidade);
 				
 				
-				System.out.println("\n");
-				System.out.println("*****************************************************");
-
-				System.out.println("\n Sua consulta foi agendada com sucesso!! ");
-				System.out.println("\n");
-				System.out.println("Atendimento por ordem de Chegada");
+				System.out.println("\n*****************************************************\n");
+				System.out.println("\nSua consulta foi agendada com sucesso!! ");
+				System.out.println("\nAtendimento por ordem de Chegada");
 				
 				
 				lista[x].imprimir();
 				
-				System.out.println("\n");
-				System.out.println("seu código de consulta é: "+x);
+				System.out.println("\nSeu código de consulta é: "+x);
+				if (x==30) {
+					System.out.println("\nAgenda lotada!");
+					break;
+				}
 				
+				x = x+1;
+			
 				break;
 			
 				//como posso confirmar que realmente o valor foi retirado do vetor?
 			case 2:
 				leia.nextLine();
-				System.out.println("Para desmarcar consulta por favor informe seu código de consulta: ");
+				System.out.println("\nPara desmarcar consulta por favor informe seu código de consulta: ");
 				x =leia.nextInt();
 				lista[x] = null;
-				System.out.println("\n");
-				System.out.println("Consulta desmarcada com sucesso!!");
+				System.out.println("\nConsulta desmarcada com sucesso!!");
 				
 				break;
 				
 			case 3:
-				
+				System.out.println("\nNOSSAS ESPECIALIDADES: "
+						+ "\nGinecologia "
+						+ "\nGinecologia Obstetra "
+						+ "\nFisioterapia"
+						+ "\nPsicologia"
+						+ "\nNutricionista"
+						+ "\nConsultoria de Amamentação");
 				break;
 				
 			case 4:
@@ -143,9 +146,9 @@ public class Plataforma_Consulta {
 				lista[x].imprimir();
 				
 				}else{
+					System.out.println("Este código de consulta é inválido");
 				}
-				System.out.println("Este código de consulta é inválido");
-			}
+				
 				break;
 				
 				//o case 0 está dando erro não sei porque 
@@ -160,7 +163,8 @@ public class Plataforma_Consulta {
 				break;
 				
 			//o laço de repetição não está se cumprindo e quando termino de marcar consulta por exemplo não retorna ao menu 	
-		} while (op != 0);
-	
+		} 
+
+	} while (op != 0);
 	}
 }
