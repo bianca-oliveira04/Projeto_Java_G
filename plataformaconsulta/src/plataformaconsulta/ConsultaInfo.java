@@ -48,8 +48,8 @@ public class ConsultaInfo extends PacienteInfo{
 
 
 	public void imprimir() {
-		System.out.println(getNome()+"\n"+"idade: "+getIdade()+" anos"+"\n"+"Identidade: "+getRg()+"\n"+"CPF: "+getcpf()+"\n"+"Telefone para contato: "+getCelular()+"\n"+"vai dar entrada na clínica como Plano de Saúde ou Particular: "+getPlanosaude());
-		System.out.println("Você agendou para data: "+data+" de "+mes+"\n consulta com "+especialidade);
+		System.out.println(getNome()+"\n"+"idade: "+getIdade()+" anos"+"\n"+"Identidade: "+getRg()+"\n"+"CPF: "+getcpf()+"\n"+"Telefone para contato: "+getCelular()+"\n"+"Vai dar entrada na clínica como Plano de Saúde ou Particular: "+getPlanosaude());
+		System.out.println("Você agendou para data: "+data+" de "+mes+"\nConsulta com "+especialidade);
 	
 	
 	}
