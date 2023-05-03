@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import cores.Cores;
+
 public class Plataforma_ConsultaAtualizada {
 
 	public static void main(String[] args) {
@@ -17,6 +19,7 @@ public class Plataforma_ConsultaAtualizada {
 				ConsultaInfo[] lista = new ConsultaInfo[31];
 
 				do {
+					System.out.println(Cores.TEXT_RED_BRIGHT + Cores.ANSI_WHITE_BACKGROUND);
 					System.out.println(" |*****************************************************|  ");
 					System.out.println(" |                Clinica Flor Do Ventre               |  ");
 					System.out.println(" |*****************************************************|  ");
@@ -121,6 +124,7 @@ public class Plataforma_ConsultaAtualizada {
 						System.out.println("\n*****************************************************\n");
 						System.out.println("\nSua consulta foi agendada com sucesso!! ");
 						System.out.println("\nAtendimento por ordem de Chegada");
+						System.out.println("\n");
 						
 						
 						lista[x].imprimir();
@@ -142,9 +146,12 @@ public class Plataforma_ConsultaAtualizada {
 						x =leia.nextInt();
 						if (lista[x] != null) {
 							lista[x] =null;
-						}
+							System.out.println("\nConsulta desmarcada com sucesso!!");
+						}else
 						lista[x] = null;
-						System.out.println("\nConsulta desmarcada com sucesso!!");
+						System.out.println("\nConsulta não encontrada, tente com um código válido!");
+						
+						
 						keyPress();
 						break;
 						
